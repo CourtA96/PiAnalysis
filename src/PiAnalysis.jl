@@ -27,4 +27,43 @@ function chud()
 
 end
 
+export numDig
+function numDig()
+  p = BigFloat(pi)
+
+  temp = p*(10^BigFloat(n))
+  dig = Base.digits(trunc(BigInt,temp))
+  numDgts = zeros(Float64, 10, 1)
+
+  for i in 1:n
+
+    num = dig[i]
+
+    if num == 0
+      numDgts[1] = numDgts[1] + 1
+    elseif num == 1
+      numDgts[2] = numDgts[2] + 1
+    elseif num == 2
+      numDgts[3] = numDgts[3] + 1
+    elseif num == 3
+      numDgts[4] = numDgts[4] + 1
+    elseif num == 4
+      numDgts[5] = numDgts[5] + 1
+    elseif num == 5
+      numDgts[6] = numDgts[6] + 1
+    elseif num == 6
+      numDgts[7] = numDgts[7] + 1
+    elseif num == 7
+      numDgts[8] = numDgts[8] + 1
+    elseif num == 8
+      numDgts[9] = numDgts[9] + 1
+    elseif num == 9
+        numDgts[10] = numDgts[10] + 1
+    end
+  end
+
+  return(numDgts)
+
+end
+
 end # module

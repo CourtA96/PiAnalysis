@@ -10,3 +10,4 @@ diff = abs(p1-p2)
 
 @show diff
 @show p2
+@show numDig()

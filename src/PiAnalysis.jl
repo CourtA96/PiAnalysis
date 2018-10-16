@@ -33,32 +33,36 @@ function numDig()
 
   temp = p*(10^BigFloat(n))
   dig = Base.digits(trunc(BigInt,temp))
-  numDgts = zeros(Float64, 10, 1)
+  numDgts = zeros(Float64, 10, 2)
+
+  for i in 1:10
+    numDgts[i,1] = i-1
+  end
 
   for i in 1:n
 
     num = dig[i]
 
     if num == 0
-      numDgts[1] = numDgts[1] + 1
+      numDgts[1,2] = numDgts[1,2] + 1
     elseif num == 1
-      numDgts[2] = numDgts[2] + 1
+      numDgts[2,2] = numDgts[2,2] + 1
     elseif num == 2
-      numDgts[3] = numDgts[3] + 1
+      numDgts[3,2] = numDgts[3,2] + 1
     elseif num == 3
-      numDgts[4] = numDgts[4] + 1
+      numDgts[4,2] = numDgts[4,2] + 1
     elseif num == 4
-      numDgts[5] = numDgts[5] + 1
+      numDgts[5,2] = numDgts[5,2] + 1
     elseif num == 5
-      numDgts[6] = numDgts[6] + 1
+      numDgts[6,2] = numDgts[6,2] + 1
     elseif num == 6
-      numDgts[7] = numDgts[7] + 1
+      numDgts[7,2] = numDgts[7,2] + 1
     elseif num == 7
-      numDgts[8] = numDgts[8] + 1
+      numDgts[8,2] = numDgts[8,2] + 1
     elseif num == 8
-      numDgts[9] = numDgts[9] + 1
+      numDgts[9,2] = numDgts[9,2] + 1
     elseif num == 9
-        numDgts[10] = numDgts[10] + 1
+      numDgts[10,2] = numDgts[10,2] + 1
     end
   end
 

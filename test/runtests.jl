@@ -11,3 +11,5 @@ p2 = chud()
 diff = abs(p1-p2)
 
 @test diff < 10^(-100)
+
+@show numDig()

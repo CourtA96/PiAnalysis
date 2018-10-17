@@ -7,7 +7,7 @@ n = 100
 
 setprecision(BigFloat,100000)
 
-# Chudnovsky algorithm
+# Compute pi using the Chudnovsky algorithm
 export chud
 function chud()
 

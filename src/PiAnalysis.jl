@@ -1,6 +1,6 @@
 module PiAnalysis
 
-# using Plots
+using Plots
 
 # Number of digits in pi = n
 n = 100
@@ -36,7 +36,8 @@ function numDig(a::Int,b::Int)
   numDgts = zeros(Float64, 10, 2)
 
   for i in 1:10
-    numDgts[i,1] = i-1
+    d = i-1
+    numDgts[i,1] = d
   end
 
   for i in a:b
@@ -69,5 +70,21 @@ function numDig(a::Int,b::Int)
   return(numDgts)
 
 end
+
+export PiPlot
+function PiPlot(a::Int,b::Int)
+
+  pyplot()
+
+  values = numDig(a,b)
+
+  x = ["0","1","2","3","4","5","6","7","8","9"]
+
+  y = values[:,2]
+
+  pie(x,y,title="Digits in pi from $a to $b",l=0.5)
+
+end
+
 
 end # module

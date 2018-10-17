@@ -12,4 +12,17 @@ diff = abs(p1-p2)
 
 @test diff < 10^(-100)
 
-@show numDig()
+@testset "Test of numDig()" begin
+
+  for i in 1:100
+    i = 1
+    ary = numDig(i,5*i)
+    intvl = 5*i-i+1
+
+    for j in 1:10
+      @test ary[j,2] < (intvl/10) + sqrt(intvl)
+      @test ary[j,2] > (intvl/10) - sqrt(intvl)
+    end
+
+  end
+end

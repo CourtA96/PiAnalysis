@@ -28,10 +28,10 @@ function chud()
 end
 
 export numDig
-function numDig()
+function numDig(a::Int,b::Int)
   p = BigFloat(pi)
 
-  temp = p*(10^BigFloat(n))
+  temp = p*(10^BigFloat(b))
   dig = Base.digits(trunc(BigInt,temp))
   numDgts = zeros(Float64, 10, 2)
 
@@ -39,9 +39,9 @@ function numDig()
     numDgts[i,1] = i-1
   end
 
-  for i in 1:n
+  for i in a:b
 
-    num = dig[i]
+    num = dig[b+1-i]
 
     if num == 0
       numDgts[1,2] = numDgts[1,2] + 1

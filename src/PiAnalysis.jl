@@ -139,6 +139,11 @@ end
 
 # Function to compare the number of recurrences in two different
 # intervals
+#
+# Takes the takes the number of the first and last digit in both
+# desired intervals, as well as the desired precision of BigFloat,
+# as input. Returns an array with the digits in the first column
+# and the number of recurrences in the second column.
 
 export digCompare
 function digCompare(a::Int,b::Int,c::Int,d::Int,prcsn::Int)

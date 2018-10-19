@@ -4,13 +4,15 @@
 
 ## Introduction
 
-PiAnalysis is a package that contains functions that compute pi using the Chudnovsky algorithm and compare it to the value of pi that Julia computes. It also has functions that count the recurrences of each digit of pi and compare how the count varies for different intervals, and a function that plots the count as a pie chart.
+PiAnalysis checks the accuracy of pi in Julia, counts the number of recurrences of the digits of pi in a given interval, compares the recurrences in two given intervals and plots the recurrences as a pie chart.
 
 ## Functions
 
 ### chud(prcsn::Int)
 
-Function to compute pi using the Chudnovsky algorithm. chud() takes the desired precision of BigFloat as input.
+Function to compute pi using the Chudnovsky algorithm. The algorithm found at [Wolfram MathWorld](http://mathworld.wolfram.com/PiFormulas.html).
+
+chud() takes the desired precision prcsn of BigFloat as input.
 
 #### Example code:
 
@@ -25,7 +27,7 @@ julia> chud(1024)
 
 Function to test the accuracy of Julia's pi by comparing it to the result of the Chudnovsky algorithm.
 
-piAccurate() takes the desired precision of BigFloat as input.
+piAccurate() takes the desired precision prcsn of BigFloat as input.
 
 #### Example Code:
 
@@ -43,7 +45,9 @@ julia> piAccurate(2048)
 
 Function to find the number of recurrences of each digit of pi.
 
-numDig() takes the number of the first and last digit in the desired interval, as well as the desired precision of BigFloat, as input. Returns an array with the digits in the first column and the number of recurrences in the second column.
+numDig() takes the place number of the first and last digit in the desired interval (a,b), as well as the desired precision prcsn of BigFloat, as input.
+
+Returns an array with the digits in the first column and the number of recurrences in the second column.
 
 #### Example code:
 
@@ -67,7 +71,9 @@ julia> numDig(1,100,1024)
 
 Function to compare the number of recurrences in two different intervals.
 
-Takes the takes the number of the first and last digit in both desired intervals (a,b) and (c,d), as well as the desired precision of BigFloat prcsn,as input. Returns an array with the digits in the first column and the difference in the number of recurrences in the second column.
+Takes the takes the number of the first and last digit in both desired intervals (a,b) and (c,d), as well as the desired precision of BigFloat prcsn,as input.
+
+Returns an array with the digits in the first column and the difference in the number of recurrences in the second column.
 
 #### Example code:
 
@@ -92,7 +98,7 @@ julia> digCompare(1,100,101,200,1024)
 
 Function to plot the recurrences as a pie chart
 
-Takes the number of the first and last digit in the desired interval, as well as the desired precision of BigFloat as input
+Takes the number of the first and last digit in the desired interval (a,b), as well as the desired precision of BigFloat prcsn as input
 
 Uses Plots and pyplot()
 
@@ -103,4 +109,23 @@ Uses Plots and pyplot()
 julia> piPlot(1,100,1024)
 
 ```
+
 ![piPlot(1,100,1024) output](https://raw.githubusercontent.com/CourtA96/PiAnalysis/master/pi%20chart%20example%20image.png)
+
+## Tests
+
+The tests check that chud() is calculating pi accurately by comparing the result of chud() to that of Julia's pi then check piAccurate() by comparing the difference to the result of piAccurate(). If the tests pass, either they're both right or they're both wrong, and most likely they're both right.
+
+The tests also check that the first 10 digits of numDig() are correct and then check that the results of numDig() and digCompare() don't vary outside statistical probability
+
+The digits of pi are randomly distributed, so the count for each digit shouldn't vary outside (+/-)sqrt(N) of 1/10th of N where N is the length of the interval. By the same reasoning, the result for each digit in digCompare() should be within (+/-)sqrt(2) * sqrt(N) since errors add in quadrature.
+
+## Author
+
+ - Courtney Allen
+
+## License
+
+Apache License 2.0
+
+see [LICENSE](https://github.com/CourtA96/PiAnalysis/blob/master/LICENSE) for more information.

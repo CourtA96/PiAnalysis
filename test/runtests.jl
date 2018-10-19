@@ -2,8 +2,8 @@ using PiAnalysis
 using Test
 
 # Check that chud() is calculating pi accurately by comparing the
-# result of chud() to that of Julia's pi then compares the
-# difference to the result of piAccurate
+# result of chud() to that of Julia's pi then check piAccurate() by
+# comparing the difference to the result of piAccurate()
 #
 # Either they're both right or they're both wrong
 
@@ -57,7 +57,7 @@ end
   # digit shouldn't vary outside (+/-)sqrt(N) of 1/10th of N
   # where N is the length of the interval. By the same reasoning,
   # the result for each digit in digCompare() should be within
-  # (+/-)2*sqrt(N)
+  # (+/-)sqrt(2)*sqrt(N) since errors add in quadrature.
 
   for i in 1:100
 
@@ -69,8 +69,8 @@ end
     for j in 1:10
       @test ary1[j,2] < (intvl/10) + sqrt(intvl) # Test of numDig()
       @test ary1[j,2] > (intvl/10) - sqrt(intvl)
-      @test ary2[j,2] < 2 * sqrt(intvl2)         # Test of digCompare()
-      @test ary2[j,2] > -2 * sqrt(intvl2)
+      @test ary2[j,2] < sqrt(2) * sqrt(intvl2)         # Test of digCompare()
+      @test ary2[j,2] > -sqrt(2) * sqrt(intvl2)
     end
 
   end

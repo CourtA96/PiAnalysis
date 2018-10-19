@@ -35,9 +35,9 @@ function chud(prcsn::Int)
 
 end
 
-# Function to test the accuracy of Julia's pi by comparing it
+# Function to test the accuracy of Julia's pi by comparing it to
+# the result of the Chudnovsky algorithm
 #
-# to the result of the Chudnovsky algorithm
 # piAccurate() takes the desired precision of BigFloat as input
 
 export piAccurate

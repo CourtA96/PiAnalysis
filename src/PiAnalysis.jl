@@ -44,6 +44,14 @@ end
 export numDig
 function numDig(a::Int,b::Int,prcsn::Int)
 
+  if a>=b
+    return error("The first input cannot be greater than or equal to the second input")
+  end
+
+  if b > prcsn/3.5
+    return error("The precision must be higher for this interval (Try a precision that is at least 3.5 times the end bound)")
+  end
+
   setprecision(BigFloat,prcsn)
 
   p = BigFloat(pi)
@@ -88,8 +96,27 @@ function numDig(a::Int,b::Int,prcsn::Int)
 
 end
 
-export PiPlot
-function PiPlot(a::Int,b::Int)
+export digCompare
+function digCompare(a::Int,b::Int,c::Int,d::Int,prcsn::Int)
+
+  if (b-a) != (d-c)
+    return error("The intervals are not equal")
+  end
+
+  if c<=a
+    return error("The intervals cannot overlap")
+  end
+
+  dig1 = numDig(a,b,prcsn)
+  dig2_temp = numDig(c,d,prcsn)
+  dig2 = dig2_temp-[0 0;1 0;2 0;3 0;4 0;5 0;6 0;7 0;8 0;9 0]
+
+  return dig1-dig2
+
+end
+
+export piPlot
+function piPlot(a::Int,b::Int)
 
   pyplot()
 

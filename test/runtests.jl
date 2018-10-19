@@ -36,12 +36,16 @@ end
 
   for i in 1:100
     i = 1
-    ary = numDig(i,5*i,2048)
+    ary1 = numDig(i,5*i,2048)
+    ary2 = digCompare(i,2*i,2*i+1,3*i+1,2048)
     intvl = 5*i-i+1
+    intvl2 = 2*i-i+1
 
     for j in 1:10
-      @test ary[j,2] < (intvl/10) + sqrt(intvl)
-      @test ary[j,2] > (intvl/10) - sqrt(intvl)
+      @test ary1[j,2] < (intvl/10) + sqrt(intvl)
+      @test ary1[j,2] > (intvl/10) - sqrt(intvl)
+      @test ary2[j,2] < sqrt(intvl2)
+      @test ary2[j,2] > -sqrt(intvl2)
     end
 
   end

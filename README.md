@@ -103,3 +103,4 @@ Uses Plots and pyplot()
 julia> piPlot(1,100,1024)
 
 ```
+![piPlot(1,100,1024) output](https://raw.githubusercontent.com/CourtA96/PiAnalysis/master/pi%20chart%20example%20image.png)

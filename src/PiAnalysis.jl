@@ -10,7 +10,7 @@ function chud(prcsn::Int)
 
   pInvTemp = 0
 
-  for i in 0:50
+  for i in 0:ceil(28*prcsn/1024)
 
     pInvTemp = pInvTemp + (-1)^(i)*factorial(BigInt(6*i))*BigInt(545140134*i+13591409)/((factorial(BigInt(3*i))*((factorial(BigInt(i)))^3)*(BigInt(640320)^BigFloat(3*i+(3/2)))))
 
@@ -42,9 +42,9 @@ end
 # Find recurrences of each digit of pi
 
 export numDig
-function numDig(a::Int,b::Int)
+function numDig(a::Int,b::Int,prcsn::Int)
 
-  setprecision(BigFloat,2048)
+  setprecision(BigFloat,prcsn)
 
   p = BigFloat(pi)
 
